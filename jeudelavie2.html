@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jeu de la vie</title>
+        <script src="json.js"></script>
+        <script src="js.js"></script>
+        <script src="field_edit.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="page">
+            <div id="inputs" class="inputs-container">
+                <div class="input-field">
+                    <label for="width">Width:</label>
+                    <input type="number" id="width" value="50">
+                </div>
+                <div class="input-field">
+                    <label for="height">Height:</label>
+                    <input type="number" id="height" value="50">
+                    <button id="submit" class="btn">Créer le champ</button>
+                </div>
+                
+                <div class="button-container">
+                    <label for="delay">Delay:</label>
+                    <input id="delay" type="number">
+                    <button id="start" class="btn">Start</button>
+                    <button id="clear" class="btn">Clear</button>
+                </div>
+                
+                <div class="input-field">
+                    <label for="pourcentage">Pourcentage:</label>
+                    <input id="pourcentage" type="number" value='50'>
+                    <button id="random" class="btn">Random</button>
+                </div>
+
+                <div class="input-field">
+                    <label for="forme">Forme:</label>
+                    <select id="forme">
+                        <option value="point" selected>point</option>
+                        <option value="bloc">bloc</option>
+                        <option value="clignotant">clignotant</option>
+                        <option value="planeur">planeur</option>
+                        <option value="vaisseau">vaisseau</option>
+                        <option value="pulsar">pulsar</option>
+                        <option value="canon">canon</option>
+                    </select>
+                    <button id="rotate" class="btn">Rotate</button>
+                </div>
+            </div>
+
+            <div id="conteiner"></div>
+        </div>
+
+        <script>
+            
+
+        </script>
+        <style>
+            #conteiner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .life {
+                background-color: black!important;
+            }
+            .previsualisation{
+                background-color: #f07575;
+                border: 2px solid #f07575!important;
+            }
+        </style>
+    </body>
+</html>
