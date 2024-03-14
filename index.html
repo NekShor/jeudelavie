@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <h1>Jeu de la vie</h1>
         <div id="page">
             <div id="inputs" class="inputs-container">
                 <div class="input-field">
@@ -54,10 +55,19 @@
             <div id="conteiner"></div>
         </div>
 
-        <script>
-            
-
-        </script>
+        <div id="explication">
+            <h2>Explication</h2>
+            <p>Le jeu de la vie est un automate cellulaire mis au point par le mathématicien britannique John Horton Conway en 1970. Il s'agit d'un jeu à zéro joueur, ce qui signifie que son évolution est déterminée par son état initial et ne nécessite aucune intervention de la part d'un humain. On interagit avec le jeu de la vie en créant un état initial, puis en observant son évolution.</p>
+            <p>Le jeu se déroule sur une grille bidimensionnelle infinie (mais de taille finie) de cellules carrées. Chaque cellule a huit voisins, qui sont les cellules directement adjacentes horizontalement, verticalement ou en diagonale. Chaque cellule de la grille peut être dans l'un des deux états possibles, vie ou mort. L'état de la grille évolue à chaque étape du jeu en fonction de l'état de ses cellules voisines.</p>
+            <p>À chaque étape, les règles suivantes sont appliquées :</p>
+            <ul>
+                <li>Une cellule morte possédant exactement trois voisines vivantes devient vivante (naissance).</li>
+                <li>Une cellule vivante possédant deux ou trois voisines vivantes le reste, sinon elle meurt (isolement ou étouffement).</li>
+            </ul>
+            <p>Le jeu de la vie est un exemple de ce que l'on appelle un automate cellulaire, c'est-à-dire un modèle mathématique pour un système dynamique qui évolue dans le temps en fonction de son état initial et d'un ensemble de règles déterministes. Les automates cellulaires sont des modèles utiles pour simuler des phénomènes naturels, tels que la croissance des populations, la propagation des incendies de forêt, la formation de motifs dans les systèmes physiques, etc.</p>
+        
+            <p>Pour plus d'informations sur le sujet je vous conseil l'excellente vidéo de Science Etonnante sur le sujet : <a href="https://www.youtube.com/watch?v=S-W0NX97DB0&ab_channel=ScienceEtonnante">https://www.youtube.com/watch?v=S-W0NX97DB0&ab_channel=ScienceEtonnante</a></a></p>
+        </div>
         <style>
             #conteiner {
                 display: flex;
