@@ -106,7 +106,7 @@ async function tour(){
     }
     hashs.push(newHash);
     if(nombreTour % 25 === 0){
-        updateGraph();
+        await updateGraph();
     }
 
     return;
