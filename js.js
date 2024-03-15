@@ -1,4 +1,5 @@
 var nombreTour = 0;
+var infosTour = [];
 var champ = [];
 var pause = true;
 var delay = 50;
@@ -87,15 +88,28 @@ async function tour(){
     
     var time = Date.now() - timestamp;
     nombreTour++
-    console.log({'nombre cellules' : champ.length, 'temps tour' : time, 'tour' : nombreTour})
+    var infoTour = {'nombre_cellules' : champ.length, 'temps_tour' : time, 'tour' : nombreTour};
+    console.log(infoTour);
+    infosTour.push(infoTour);
     
     var newHash = champ.join(',');
+    var indicateur_de_stabilie = document.getElementById('indicateur_de_stabilite');
     if(hashs.includes(newHash)){
         pause = true;
         start.innerHTML = 'Start';
-        alert('Stabilisation');
+        if(indicateur_de_stabilie.classList.contains('unstable')){
+            indicateur_de_stabilie.classList.remove('unstable')
+        }
+    }else{
+        if(!indicateur_de_stabilie.classList.contains('unstable')){
+            indicateur_de_stabilie.classList.add('unstable')
+        }
     }
     hashs.push(newHash);
+    if(nombreTour % 25 === 0){
+        updateGraph();
+    }
+
     return;
 }   
 

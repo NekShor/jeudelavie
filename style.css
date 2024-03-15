@@ -83,3 +83,29 @@ select {
         width: 100%;
     }
 }
+
+
+#indicateur_de_stabilite{
+    background-color: #44dc22;
+    display: inline;
+    color: white;
+    padding: 10px;
+}
+
+.unstable{
+    background-color: #e74c3c !important;
+}
+
+
+#conteiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.life {
+    background-color: black!important;
+}
+.previsualisation{
+    background-color: #f07575;
+    border: 2px solid #f07575!important;
+}

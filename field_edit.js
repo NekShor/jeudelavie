@@ -38,6 +38,7 @@ function clearCells (){
         cells[k].classList.remove('life');
     }
     champ = [];
+    infosTour = [];
 }
 
 function rotateForme(cells){

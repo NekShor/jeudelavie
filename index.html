@@ -7,6 +7,7 @@
         <script src="json.js"></script>
         <script src="js.js"></script>
         <script src="field_edit.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -44,11 +45,15 @@
                     </select>
                     <button id="rotate" class="btn">Rotate</button>
                 </div>
+                <div id="indicateur_de_stabilite" class="stable">Stable</div>
             </div>
 
             <div id="conteiner"></div>
         </div>
+        <div>
+            <canvas id="myChart" width="600" height="400"></canvas>
 
+        </div>
         <div id="explication">
             <h2>Explication</h2>
             <p>Le jeu de la vie est un automate cellulaire mis au point par le mathématicien britannique John Horton Conway en 1970. Il s'agit d'un jeu à zéro joueur, ce qui signifie que son évolution est déterminée par son état initial et ne nécessite aucune intervention de la part d'un humain. On interagit avec le jeu de la vie en créant un état initial, puis en observant son évolution.</p>
@@ -62,19 +67,69 @@
         
             <p>Pour plus d'informations sur le sujet je vous conseil l'excellente vidéo de Science Etonnante sur le sujet : <a href="https://www.youtube.com/watch?v=S-W0NX97DB0&ab_channel=ScienceEtonnante">https://www.youtube.com/watch?v=S-W0NX97DB0&ab_channel=ScienceEtonnante</a></a></p>
         </div>
-        <style>
-            #conteiner {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+          
+        <script>
+            var ctx = document.getElementById('myChart')
+            ctx.parentNode.style.height = '400px';
+            ctx.parentNode.style.width = '600px';
+            const labels = '';
+            var data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+            };
+
+            const stackedLine = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            stacked: false
+                        }
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            });
+
+            function updateGraph(){
+                var nombresCells = [];
+                var tempsTours = [];
+                var listeTours = [];
+                for (var i = 0; i < Object.keys(infosTour).length; i++) {
+                    nombresCells.push(infosTour[i].nombre_cellules);
+                    tempsTours.push(infosTour[i].temps_tour);
+                    listeTours.push(infosTour[i].tour);
+                }
+
+                var data = {
+                    labels: listeTours,
+                    datasets: [{
+                        label: 'Nombre de cellulles',
+                        data: nombresCells,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Temps par tour (ms)',
+                        data: tempsTours,
+                        fill: false,
+                        borderColor: 'rgb(192, 75, 192)',
+                        tension: 0.1
+                    }
+                    ]
+                };
+                stackedLine.data = data;
+                stackedLine.update();
             }
-            .life {
-                background-color: black!important;
-            }
-            .previsualisation{
-                background-color: #f07575;
-                border: 2px solid #f07575!important;
-            }
-        </style>
+        </script>
     </body>
 </html>
