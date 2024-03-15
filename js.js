@@ -4,10 +4,10 @@ var pause = true;
 var delay = 50;
 var rotate = 0;
 var mouseDown = false;
+var hashs = [];
 
 document.addEventListener('DOMContentLoaded', function() {
     interval();
-    
     document.getElementById('submit').addEventListener('click', function (){createField(document.getElementById('width').value, document.getElementById('height').value)});
     document.getElementById('delay').addEventListener('change', function() {delay = this.value;});
     document.getElementById('rotate').addEventListener('click', function() {rotate++;});
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('random').addEventListener('click', fillRandom);    
     document.getElementById('start').addEventListener('click', startAndPause);
     createField(document.getElementById('width').value, document.getElementById('height').value)
+    setOptionToSelect()
 });
 document.addEventListener('mousedown', function() {mouseDown = true;});
 document.addEventListener('mouseup', function() {mouseDown = false;});
-
 
 
 function selectCellConcerned(){
@@ -84,10 +84,18 @@ async function tour(){
 
     }
     champ = newChamp;
-
+    
     var time = Date.now() - timestamp;
     nombreTour++
     console.log({'nombre cellules' : champ.length, 'temps tour' : time, 'tour' : nombreTour})
+    
+    var newHash = champ.join(',');
+    if(hashs.includes(newHash)){
+        pause = true;
+        start.innerHTML = 'Start';
+        alert('Stabilisation');
+    }
+    hashs.push(newHash);
     return;
 }   
 

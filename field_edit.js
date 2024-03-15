@@ -1,3 +1,15 @@
+function setOptionToSelect(){
+    console.log('setOptionToSelect')
+    for (var i = 0; i < Object.keys(json).length; i++) {
+        console.log(Object.keys(json)[i])
+        var option = document.createElement('option');
+        option.value = Object.keys(json)[i];
+        option.innerHTML = Object.keys(json)[i];
+        document.getElementById('forme').appendChild(option);
+    }
+}
+
+
 function fillRandom(){
     clearCells()
     var cells = document.querySelectorAll('.cell');
@@ -84,6 +96,11 @@ function addForme(i, j, previsualisation = false){
             }
         }
     }
+}
+
+
+function viewChamp(){
+    console.log(champ)
 }
 
 
