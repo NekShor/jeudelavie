@@ -95,7 +95,6 @@ async function tour(){
     var newHash = champ.join(',');
     var indicateur_de_stabilie = document.getElementById('indicateur_de_stabilite');
     if(hashs.includes(newHash)){
-        pause = true;
         start.innerHTML = 'Start';
         if(indicateur_de_stabilie.classList.contains('unstable')){
             indicateur_de_stabilie.classList.remove('unstable')
