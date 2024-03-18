@@ -39,6 +39,8 @@ function clearCells (){
     }
     champ = [];
     infosTour = [];
+    updateGraph();
+
 }
 
 function rotateForme(cells){
